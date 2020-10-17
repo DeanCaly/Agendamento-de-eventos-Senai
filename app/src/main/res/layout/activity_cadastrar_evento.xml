@@ -15,7 +15,7 @@
         android:textSize="14sp" />
 
     <EditText
-        android:id="@+id/EditText_nomeEvento"
+        android:id="@+id/editText_nome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -29,7 +29,7 @@
         android:textSize="14sp" />
 
     <EditText
-        android:id="@+id/editText_dataEvento"
+        android:id="@+id/editText_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -43,7 +43,7 @@
         android:textSize="14sp" />
 
     <EditText
-        android:id="@+id/editText_localEvento"
+        android:id="@+id/editText_local"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -60,16 +60,24 @@
             android:layout_height="55dp"
             android:layout_weight="1"
             android:backgroundTint="#9FA39C"
-            android:onClick="OnclickVoltar"
+            android:onClick="onClickVoltar"
             android:text="Voltar" />
 
         <Button
-            android:id="@+id/btn_salvarAgendamento"
+            android:id="@+id/btn_salvar"
             android:layout_width="wrap_content"
             android:layout_height="55dp"
             android:layout_weight="1"
             android:backgroundTint="#86AE5D"
-            android:onClick="OncClickSalvar"
+            android:onClick="oncClickSalvar"
             android:text="Salvar" />
+
+        <Button
+            android:id="@+id/btn_excluir"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:onClick="onClickExcluir"
+            android:text="Excluir" />
     </LinearLayout>
 </LinearLayout>
