@@ -41,7 +41,7 @@ public class CadastrarEvento extends AppCompatActivity {
             EditText editTextData = findViewById(R.id.editText_data);
             EditText editTextLocal = findViewById(R.id.editText_local);
             editTextNome.setText(evento.getNome());
-            editTextData.setText(String.valueOf(evento.getData()));
+            editTextData.setText(evento.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             editTextLocal.setText(evento.getLocal());
             edicao = true;
             id = evento.getId();
@@ -58,18 +58,16 @@ public class CadastrarEvento extends AppCompatActivity {
         EditText editTextLocal = findViewById(R.id.editText_local);
 
         String nome = editTextNome.getText().toString();
+        LocalDate data = LocalDate.parse(editTextData.getText().toString(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String local = editTextLocal.getText().toString();
 
+        Evento evento = new Evento(id, nome, data, local);
+        Intent intent = new Intent();
+
         if (edicao) {
-            LocalDate data = LocalDate.parse(editTextData.getText().toString());
-            Evento evento = new Evento(id, nome, data, local);
-            Intent intent = new Intent();
             intent.putExtra("eventoEditado", evento);
             setResult(RESULT_CODE_EVENTO_EDITADO, intent);
         } else {
-            LocalDate data = LocalDate.parse(editTextData.getText().toString(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            Evento evento = new Evento(id, nome, data, local);
-            Intent intent = new Intent();
             intent.putExtra("novoEvento", evento);
             setResult(RESULT_CODE_NOVO_EVENTO, intent);
         }
