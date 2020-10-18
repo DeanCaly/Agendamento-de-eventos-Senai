@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -64,16 +67,37 @@ public class CadastrarEvento extends AppCompatActivity {
         Evento evento = new Evento(id, nome, data, local);
         Intent intent = new Intent();
 
-        if (edicao) {
-            intent.putExtra("eventoEditado", evento);
-            setResult(RESULT_CODE_EVENTO_EDITADO, intent);
-        } else {
-            intent.putExtra("novoEvento", evento);
-            setResult(RESULT_CODE_NOVO_EVENTO, intent);
+        String campoVazio = "";
+
+        if (nome.equals("")) {
+            campoVazio = "Campo Nome é obrigatório. ";
+            editTextNome.setError("Este campo é obrigatório");
         }
-        Toast.makeText(CadastrarEvento.this, "Agendamento feito com sucesso!", Toast.LENGTH_SHORT).show();
-        finish();
+        if (local.equals("")) {
+            campoVazio = "Campo Local é obrigatório. ";
+            editTextLocal.setError("Este campo é obrigatório");
+        }
+//        if (editTextData.getText().toString().equals("")) {
+//            campoVazio = "Campo Data é obrigatório. ";
+//            editTextData.setError("Este campo é obrigatório");
+//        }
+
+
+        if (campoVazio.equals("")){
+            if (edicao) {
+                intent.putExtra("eventoEditado", evento);
+                setResult(RESULT_CODE_EVENTO_EDITADO, intent);
+            } else {
+                intent.putExtra("novoEvento", evento);
+                setResult(RESULT_CODE_NOVO_EVENTO, intent);
+            }
+            Toast.makeText(CadastrarEvento.this, "Agendamento feito com sucesso!", Toast.LENGTH_SHORT).show();
+            finish();
+        } else {
+            Toast.makeText(CadastrarEvento.this, "Verificar os campos" + campoVazio, Toast.LENGTH_LONG).show();
+        }
     }
+
 
     public void onClickExcluir(View v) {
         EditText editTextNome = findViewById(R.id.editText_nome);
