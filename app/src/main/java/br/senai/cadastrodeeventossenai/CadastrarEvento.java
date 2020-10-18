@@ -80,7 +80,9 @@ public class CadastrarEvento extends AppCompatActivity {
 //        if (editTextData.getText().toString().equals("")) {
 //            campoVazio = "Campo Data é obrigatório. ";
 //            editTextData.setError("Este campo é obrigatório");
+//        
 //        }
+
 
 
         if (campoVazio.equals("")){
