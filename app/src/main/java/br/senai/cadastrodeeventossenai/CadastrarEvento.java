@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -34,6 +35,63 @@ public class CadastrarEvento extends AppCompatActivity {
 
         final EditText editTextData = (EditText) findViewById(R.id.editText_data);
         editTextData.addTextChangedListener(Mask.insert("##/##/####", editTextData));
+
+        Button btn_salvar = (Button) findViewById(R.id.btn_salvar);
+        btn_salvar.setOnClickListener(new View.OnClickListener() {
+
+            public String validar() {
+                String campoVazio = "";
+                EditText editTextNome = (EditText) findViewById(R.id.editText_nome);
+                EditText editTextData = (EditText) findViewById(R.id.editText_data);
+                EditText editTextLocal = (EditText) findViewById(R.id.editText_local);
+
+                if (editTextNome.getText().toString().equals("")) {
+                    campoVazio = "Campo Nome é obrigatório. ";
+                    editTextNome.setError("Este campo é obrigatório");
+                }
+                if (editTextLocal.getText().toString().equals("")) {
+                    campoVazio = "Campo Local é obrigatório. ";
+                    editTextLocal.setError("Este campo é obrigatório");
+                }
+                if (editTextData.getText().toString().equals("")) {
+                    campoVazio = "Campo Data é obrigatório. ";
+                    editTextData.setError("Este campo é obrigatório");
+                }
+
+                return campoVazio;
+            }
+
+            @Override
+            public void onClick(View v) {
+                EditText editTextNome = findViewById(R.id.editText_nome);
+                EditText editTextData = findViewById(R.id.editText_data);
+                EditText editTextLocal = findViewById(R.id.editText_local);
+
+                String nome = editTextNome.getText().toString();
+
+                String data = editTextData.getText().toString();
+
+                String local = editTextLocal.getText().toString();
+
+                Evento evento = new Evento(id, nome, data, local);
+                Intent intent = new Intent();
+
+                String campoVazio = validar();
+                if (campoVazio.equals("")) {
+                    if (edicao) {
+                        intent.putExtra("eventoEditado", evento);
+                        setResult(RESULT_CODE_EVENTO_EDITADO, intent);
+                    } else {
+                        intent.putExtra("novoEvento", evento);
+                        setResult(RESULT_CODE_NOVO_EVENTO, intent);
+                    }
+                    Toast.makeText(CadastrarEvento.this, "Agendamento feito com sucesso!", Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    Toast.makeText(CadastrarEvento.this, "Verificar os campos obrigatórios! " + campoVazio, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     private void carregarEvento() {
@@ -44,7 +102,7 @@ public class CadastrarEvento extends AppCompatActivity {
             EditText editTextData = findViewById(R.id.editText_data);
             EditText editTextLocal = findViewById(R.id.editText_local);
             editTextNome.setText(evento.getNome());
-            editTextData.setText(evento.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            editTextData.setText(evento.getData());
             editTextLocal.setText(evento.getLocal());
             edicao = true;
             id = evento.getId();
@@ -55,59 +113,13 @@ public class CadastrarEvento extends AppCompatActivity {
         finish();
     }
 
-    public void oncClickSalvar(View v) {
-        EditText editTextNome = findViewById(R.id.editText_nome);
-        EditText editTextData = findViewById(R.id.editText_data);
-        EditText editTextLocal = findViewById(R.id.editText_local);
-
-        String nome = editTextNome.getText().toString();
-        LocalDate data = LocalDate.parse(editTextData.getText().toString(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        String local = editTextLocal.getText().toString();
-
-        Evento evento = new Evento(id, nome, data, local);
-        Intent intent = new Intent();
-
-        String campoVazio = "";
-
-        if (nome.equals("")) {
-            campoVazio = "Campo Nome é obrigatório. ";
-            editTextNome.setError("Este campo é obrigatório");
-        }
-        if (local.equals("")) {
-            campoVazio = "Campo Local é obrigatório. ";
-            editTextLocal.setError("Este campo é obrigatório");
-        }
-//        if (editTextData.getText().toString().equals("")) {
-//            campoVazio = "Campo Data é obrigatório. ";
-//            editTextData.setError("Este campo é obrigatório");
-//        
-//        }
-
-
-
-        if (campoVazio.equals("")){
-            if (edicao) {
-                intent.putExtra("eventoEditado", evento);
-                setResult(RESULT_CODE_EVENTO_EDITADO, intent);
-            } else {
-                intent.putExtra("novoEvento", evento);
-                setResult(RESULT_CODE_NOVO_EVENTO, intent);
-            }
-            Toast.makeText(CadastrarEvento.this, "Agendamento feito com sucesso!", Toast.LENGTH_SHORT).show();
-            finish();
-        } else {
-            Toast.makeText(CadastrarEvento.this, "Verificar os campos" + campoVazio, Toast.LENGTH_LONG).show();
-        }
-    }
-
-
     public void onClickExcluir(View v) {
         EditText editTextNome = findViewById(R.id.editText_nome);
         EditText editTextData = findViewById(R.id.editText_data);
         EditText editTextLocal = findViewById(R.id.editText_local);
 
         String nome = editTextNome.getText().toString();
-        LocalDate data = LocalDate.parse(editTextData.getText().toString());
+        String data = editTextData.getText().toString();
         String local = editTextLocal.getText().toString();
 
         Evento evento = new Evento(id, nome, data, local);

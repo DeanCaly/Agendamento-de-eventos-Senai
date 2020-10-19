@@ -10,11 +10,11 @@ public class Evento implements Serializable {
 
     private int id;
     private String nome;
-    private LocalDate data;
+    private String data;
     private String local;
 
 
-    public Evento(int id, String nome, LocalDate data, String local) {
+    public Evento(int id, String nome, String data, String local) {
         this.id = id;
         this.nome = nome;
         this.data = data;
@@ -37,14 +37,13 @@ public class Evento implements Serializable {
         this.nome = nome;
     }
 
-    public LocalDate getData() {
+    public String getData() {
         return data;
     }
 
     public void setData(String data) {
-        String format = "dd/MM/yyyy";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
-        this.data = LocalDate.parse(data, formatter);
+        String formatter = String.format("dd/MM/yyyy");
+        this.data = data.format(formatter);
     }
 
     public String getLocal() {
