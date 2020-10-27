@@ -1,6 +1,5 @@
 package br.senai.cadastrodeeventossenai;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,12 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import br.senai.cadastrodeeventossenai.database.EventoDAO;
 import br.senai.cadastrodeeventossenai.modelo.Evento;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
