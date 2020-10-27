@@ -21,7 +21,7 @@ public class EventoDAO {
     public boolean salvar(Evento evento) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(EventoEntity.COLUMN_NAME_NOME, evento.getNome());
-        contentValues.put(EventoEntity.COLUMN_NAME_DATA, evento.getData());
+        contentValues.put(EventoEntity.COLUMN_NAME_DATA, String.valueOf(evento.getData()));
         contentValues.put(EventoEntity.COLUMN_NAME_LOCAL, evento.getLocal());
         if (evento.getId() > 0) {
             return dbGateway.getDatabase().update(EventoEntity.TABLE_NAME,
@@ -33,14 +33,14 @@ public class EventoDAO {
                 null, contentValues) > 0;
     }
 
-    public void excluir(Evento evento) {
+    public boolean excluir(Evento evento) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(EventoEntity.COLUMN_NAME_NOME, evento.getNome());
-        contentValues.put(EventoEntity.COLUMN_NAME_DATA, evento.getData());
+        contentValues.put(EventoEntity.COLUMN_NAME_DATA, String.valueOf(evento.getData()));
         contentValues.put(EventoEntity.COLUMN_NAME_LOCAL, evento.getLocal());
-        dbGateway.getDatabase().delete(EventoEntity.TABLE_NAME,
+        return dbGateway.getDatabase().delete(EventoEntity.TABLE_NAME,
                 EventoEntity._ID + "=?",
-                new String[]{String.valueOf(evento.getId())});
+                new String[]{String.valueOf(evento.getId())}) > 0;
     }
 
     public List<Evento> listar() {

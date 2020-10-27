@@ -3,7 +3,6 @@ package br.senai.cadastrodeeventossenai.modelo;
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Evento implements Serializable {
@@ -17,7 +16,10 @@ public class Evento implements Serializable {
     public Evento(int id, String nome, String data, String local) {
         this.id = id;
         this.nome = nome;
-        this.data = data;
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.data = String.format(data, formatter);
+
         this.local = local;
     }
 
@@ -42,16 +44,15 @@ public class Evento implements Serializable {
     }
 
     public void setData(String data) {
-        String formatter = String.format("dd/MM/yyyy");
-        this.data = data.format(formatter);
+        this.data = data;
     }
 
     public String getLocal() {
         return local;
     }
 
-    public void setLocal(LocalDate date) {
-        this.data = data;
+    public void setLocal(String local) {
+        this.local = local;
     }
 
     @NonNull

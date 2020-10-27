@@ -13,6 +13,6 @@ public class EventoContract {
     }
 
     public static final String removerTabela() {
-        return "DROP TABLE IF EXISTIS " + EventoEntity.TABLE_NAME;
+        return "DROP TABLE IF EXISTS " + EventoEntity.TABLE_NAME;
     }
 }
