@@ -17,7 +17,13 @@
         android:id="@+id/btn_agendarEvento"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:backgroundTint="#86AE5D"
         android:onClick="onClickAgendarEvento"
         android:text="Agendar Evento" />
+
+    <Button
+        android:id="@+id/btnLocal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:onClick="onClickLocais"
+        android:text="Locais" />
 </LinearLayout>

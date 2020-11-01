@@ -1,51 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".CadastrarEventoActivity">
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView_nomeEvento"
+        android:id="@+id/textView_descricaoLocal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nome do evento"
-        android:textSize="14sp" />
+        android:text="Descrição do Local" />
 
     <EditText
-        android:id="@+id/editText_nome"
+        android:id="@+id/editText_descricao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/textView_dataEvento"
+        android:id="@+id/textView_bairroLocal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Data do evento"
-        android:textSize="14sp" />
+        android:text="Bairro" />
 
     <EditText
-        android:id="@+id/editText_data"
+        android:id="@+id/editText_bairro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="date" />
+        android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/textView_localEvento"
+        android:id="@+id/textView_cidadeLocal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Local do evento"
-        android:textSize="14sp" />
+        android:text="Cidade" />
 
-    <Spinner
-        android:id="@+id/spinner_locais"
+    <EditText
+        android:id="@+id/editText_cidade"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView_capacidadeLocal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Capacidade de Público" />
+
+    <EditText
+        android:id="@+id/editText_capacidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,24 +62,24 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_voltar"
+            android:id="@+id/btn_voltar2"
             android:layout_width="wrap_content"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClickVoltar"
             android:text="Voltar" />
 
         <Button
-            android:id="@+id/btn_salvar"
+            android:id="@+id/btn_salvar2"
             android:layout_width="wrap_content"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Salvar" />
 
         <Button
-            android:id="@+id/btn_excluir"
+            android:id="@+id/btn_excluir2"
             android:layout_width="wrap_content"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClickExcluir"
             android:text="Excluir" />

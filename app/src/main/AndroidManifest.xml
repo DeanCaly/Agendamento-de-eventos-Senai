@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CadastroDeEventosSenai">
-        <activity android:name=".CadastrarEvento"></activity>
+        <activity android:name=".CadastrarEventoActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,6 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CadastrarLocalActivity"></activity>
+        <activity android:name=".ListarLocalActivity"></activity>
     </application>
 
 </manifest>

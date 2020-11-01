@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Evento eventoClicado = adapterEventos.getItem(position);
-                Intent intent = new Intent(MainActivity.this, CadastrarEvento.class);
+                Intent intent = new Intent(MainActivity.this, CadastrarEventoActivity.class);
                 intent.putExtra("eventoEdicao", eventoClicado);
                 startActivity(intent);
             }
@@ -52,8 +52,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickAgendarEvento(View v) {
-        Intent intent = new Intent(MainActivity.this, CadastrarEvento.class);
+        Intent intent = new Intent(MainActivity.this, CadastrarEventoActivity.class);
         startActivity(intent);
+    }
+
+    public void onClickLocais(View v) {
+        Intent intent = new Intent(MainActivity.this, ListarLocalActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }
