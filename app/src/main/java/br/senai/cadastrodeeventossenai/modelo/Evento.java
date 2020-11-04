@@ -16,10 +16,8 @@ public class Evento implements Serializable {
     public Evento(int id, String nome, String data, Local local) {
         this.id = id;
         this.nome = nome;
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         this.data = String.format(data, formatter);
-
         this.local = local;
     }
 
