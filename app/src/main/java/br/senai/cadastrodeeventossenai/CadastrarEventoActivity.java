@@ -38,7 +38,7 @@ public class CadastrarEventoActivity extends AppCompatActivity {
         carregarLocais();
         carregarEvento();
 
-        Button btn_salvar = (Button) findViewById(R.id.btn_salvar);
+        Button btn_salvar = findViewById(R.id.btn_salvar);
         btn_salvar.setOnClickListener(new View.OnClickListener() {
 
             public String validar() {
