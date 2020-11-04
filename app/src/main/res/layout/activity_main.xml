@@ -70,7 +70,7 @@
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:onClick="onClickCrescente"
-                android:text="Button"
+                android:text="Crescente"
                 android:textSize="7sp" />
 
             <Button
@@ -79,7 +79,7 @@
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:onClick="onClickDecrescente"
-                android:text="Button"
+                android:text="Decrescente"
                 android:textSize="7sp" />
         </LinearLayout>
     </LinearLayout>

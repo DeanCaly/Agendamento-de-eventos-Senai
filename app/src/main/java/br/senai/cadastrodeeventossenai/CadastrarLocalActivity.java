@@ -32,7 +32,7 @@ public class CadastrarLocalActivity extends AppCompatActivity {
         carregarLocal();
 
 
-        Button btn_salvar = (Button) findViewById(R.id.btn_salvar2);
+        Button btn_salvar = findViewById(R.id.btn_salvar2);
         btn_salvar.setOnClickListener(new View.OnClickListener() {
 
             public String validar() {
