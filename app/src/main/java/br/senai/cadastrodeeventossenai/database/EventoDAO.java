@@ -44,10 +44,6 @@ public class EventoDAO {
     }
 
     public boolean excluir(Evento evento) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(EventoEntity.COLUMN_NAME_NOME, evento.getNome());
-        contentValues.put(EventoEntity.COLUMN_NAME_DATA, String.valueOf(evento.getData()));
-        contentValues.put(EventoEntity.COLUMN_NAME_ID_LOCAL, evento.getLocal().getId());
         return dbGateway.getDatabase().delete(EventoEntity.TABLE_NAME,
                 EventoEntity._ID + "=?",
                 new String[]{String.valueOf(evento.getId())}) > 0;
