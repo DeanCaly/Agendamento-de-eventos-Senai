@@ -36,11 +36,6 @@ public class LocalDAO {
     }
 
     public boolean excluir(Local local) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(LocalEntity.COLUMN_NAME_DESCRICAO, local.getDescricao());
-        contentValues.put(LocalEntity.COLUMN_NAME_BAIRRO, local.getBairro());
-        contentValues.put(LocalEntity.COLUMN_NAME_CIDADE, local.getCidade());
-        contentValues.put(LocalEntity.COLUMN_NAME_CAPACIDADE, local.getCapacidade());
         return dbGateway.getDatabase().delete(LocalEntity.TABLE_NAME,
                 LocalEntity._ID + "=?",
                 new String[]{String.valueOf(local.getId())}) > 0;
